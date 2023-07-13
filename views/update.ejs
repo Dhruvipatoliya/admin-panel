@@ -1,0 +1,30 @@
+<center>
+    <h2>Update Page</h2>
+    <%if(messages.success){%>
+        <div style="width: fit-content; padding: 10px 20px;"><%=messages.success%></div>
+    <%}%>
+    <form action="/updatedata/<%=data.id%>" enctype="multipart/form-data" method="post">
+        <table>
+            <tr>
+                <td>
+                    Name : <input type="text" name="name" value="<%=data.username%>"><br><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email : <input type="text" name="email" value="<%=data.email%>"><br><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Image : <input type="file" name="img"><br><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+</center>

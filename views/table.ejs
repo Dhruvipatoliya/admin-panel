@@ -1,0 +1,73 @@
+<%-include('header')%>
+
+  <!-- Content wrapper -->
+  <div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+
+      <!-- Basic Bootstrap Table -->
+      <div class="card">
+        <%if(messages.success){%>
+          <div style="width: fit-content; padding: 10px 20px;"><%=messages.success%></div>
+        <%}%>
+        <h5 class="card-header">Table Basic</h5>
+        <div class="table-responsive text-nowrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Email</th>
+                <th>Users</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+              <tbody class="table-border-bottom-0">
+                <%for(var i of data){%>
+                  <tr>
+                    <td>
+                      <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>
+                        <%=i.username%>
+                      </strong>
+                    </td>
+                    <td><%=i.email%></td>
+                    <td>
+                      <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                        <li
+                          data-bs-toggle="tooltip"
+                          data-popup="tooltip-custom"
+                          data-bs-placement="top"
+                          class="avatar avatar-xs pull-up"
+                          title="Lilian Fuller"
+                        >
+                          <img src="<%=i.img%>" style="object-fit: cover;" alt="Avatar" class="rounded-circle" />
+                        </li>
+                      </ul>
+                    </td>
+                    <td>
+                      <div class="dropdown">
+                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                          <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="/update/<%=i.id%>"><i class="bx bx-edit-alt me-2"></i>
+                            Edit</a>
+                          <a class="dropdown-item" href="/deletedata/<%=i.id%>"><i class="bx bx-trash me-2"></i>
+                            Delete</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <%}%>
+              </tbody>
+          </table>
+        </div>
+      </div>
+      <!--/ Basic Bootstrap Table -->
+
+      <hr class="my-5" />
+
+
+
+      <%-include('footer')%>
