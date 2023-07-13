@@ -66,6 +66,7 @@ exports.logindata = async (req, res) => {
                 req.flash('success', 'login successfully')
 
                 console.log(find);
+                
                 var token = await jwt.sign({userid : find._id},process.env.KEY)
                 console.log(token);
                 res.cookie("jwt",token,{expires:new Date(Date.now()+60*1000)})
