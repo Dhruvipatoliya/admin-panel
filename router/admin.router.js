@@ -20,12 +20,17 @@ router.get('/registration',registration)
 router.post('/registrationdata',registrationdata)
 router.get('/',login)
 router.post('/logindata',logindata)
-router.get('/forgot_password',forgot_password)
+router.get('/forgot_password',admin_token,forgot_password)
 router.get('/dashboard',admin_token,dashboard)
-router.get('/forms',form)
-router.get('/table',table)
-router.get('/deletedata/:id',deletedata)
-router.get('/update/:id',updatepage)
-router.post('/updatedata/:id',upload.single('img'),updatedata)
+router.get('/forms',admin_token,form)
+router.get('/table',admin_token,table)
+router.get('/deletedata/:id',admin_token,deletedata)
+router.get('/update/:id',admin_token,updatepage)
+router.post('/updatedata/:id',upload.single('img'),admin_token,updatedata)
+router.get('/logout',async(req,res)=>{
+    res.cookie('jwt','')
+    res.clearCookie();
+    res.redirect('/dashboard') 
+})
 
-module.exports = router
+module.exports = router 
