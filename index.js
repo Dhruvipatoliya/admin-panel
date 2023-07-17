@@ -27,9 +27,9 @@ app.get('/admin',(req,res)=>{
     res.redirect('/admin/login')
 })
 
-app.use('/',require('./router/user.router'))
+app.use('/user',require('./router/user.router'))
 app.get('/',(req,res)=>{
-    res.redirect('/user_login')
+    res.redirect('/user')
 })
 
 app.use((req,res)=>{

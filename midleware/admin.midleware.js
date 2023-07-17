@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken')
 const admin = require('../model/admin.model')
 const admin_token = async(req,res,next)=>{
-    var token = req.cookies.jwt
+    var token = req.cookies.admin_jwt
     if(token){
-        console.log(token);
         var userdata = await jwt.verify(token,process.env.KEY,(err,data)=>{
             if(err){
                 console.log(err);

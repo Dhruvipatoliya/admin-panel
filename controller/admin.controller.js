@@ -57,7 +57,7 @@ exports.logindata = async (req, res) => {
                 req.flash('success', 'login successfully')
 
                 var token = await jwt.sign({userid : find._id},process.env.KEY)
-                res.cookie("jwt",token,{expires:new Date(Date.now()+24*60*60*1000)})
+                res.cookie("admin_jwt",token,{expires:new Date(Date.now()+24*60*60*1000)})
 
                 res.redirect('/admin/dashboard')
             } else {
