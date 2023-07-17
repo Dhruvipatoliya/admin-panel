@@ -18,6 +18,7 @@ require('dotenv').config()
 app.set('view engine','ejs') 
 app.set('views',path.join(__dirname,'views'))
 app.use(express.static(path.join(__dirname,'assets')))
+app.use(express.static(path.join(__dirname,'public')))
 
 app.use(express.urlencoded())
 require('./config/database')
