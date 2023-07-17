@@ -1,152 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html>
+  <head>
+    <title>Login Page</title>
     <style>
-        :root {--accent: #FFA500;
---color1: linear-gradient(to bottom right, #FFA500, #FF5F1F);
---transparent: rgb(255, 255, 255, 0.3);}
+        body {
+  background-color: transparent;
+  background-image: url("https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png");
+   background-size: cover;
+}
 
-body {
-  font-family: 'Source Sans Pro', sans-serif;
-  background-color: #EEEEEE;
-  display: flex;
-  justify-content: center;
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.avatar {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 400px;
-  background-color: var(--transparent);
-  color: var(--accent);
-  position: absolute;
-  padding: 10px 30px;
-  margin-top: 50px;
-  backdrop-filter: blur(10px);
-  border: 2px solid var(--transparent);
-  border-radius: 16px;
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
 }
 
-input {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 14px;
-  margin: 10px 0;
-  height: 40px;
-  width: 296px;
-  border: none;
-  border-bottom: 1px solid var(--accent);
-  background-color: transparent;
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+  font-family: 'Roboto', sans-serif;
   outline: none;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-a {
-  background: var(--color1);
-  color: #EEEEEE;
-  text-decoration: none;
-  padding: 12px 0;
-  margin: 20px 0 10px 0;
-  text-align: center;
-  border-radius: 30px;
-  transition: 0.4s;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
-}
-
-a:hover {
-  transform: translatey(2px);
-  box-shadow: none;
-}
-
-.socials {
-  padding: 10px 40px;
-  display: flex;
-  justify-content: space-between;
-}
-
-img {
-  max-width: 40px;
-  border-radius: 50%;
-  transition: 0.4s;
-}
-
-img:hover {
-  transform: scale(1.1);
+.form button {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  outline: none;
+  background-color: #2196F3;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
+  border-radius: 20px;
 }
 
-.circle {
-  position: absolute; 
-  top: 50%;
-  left: 50%;
-  background: var(--color1);
-  border-radius: 50%;
-  z-index: -1;
-  width: 100px;
-  height: 100px; 
-  transform: translate(-250px, -200px);
+.form button:hover,
+.form button:active,
+.form button:focus {
+  background-color: #1976D2;
 }
 
-.circle-1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: var(--color1);
-  width: 250px;
-  height: 250px; 
-  border-radius: 50%;
-  transform: translate(100px, 50px);
-  z-index: -1;
+.form h2 {
+  color: #333333;
+  font-size: 28px;
+  margin: 0 0 30px;
 }
 
-.circle-2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: var(--color1);
-  width: 150px;
-  height: 150px; 
-  border-radius: 50%;
-  transform: translate(-250px, 50px);
-  z-index: -1;
+.form p.message {
+  color: #666666;
+  font-size: 14px;
+  margin-top: 15px;
 }
+
+.form p.message a {
+  color: #2196F3;
+  text-decoration: none;
+}
+
+.form p.message a:hover {
+  text-decoration: underline;
+}
+
     </style>
-</head>
-<body>
-    <!-- font -->  
-
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    </head>
-    
-    <!-- start here -->  
-    
-    <body id="body">
-    
-    <div class="form">
-      
-        <h2>Sign up</h2>
-      
-        <input type="email" placeholder="Your email">
-        <input type="password" placeholder="Your password">
-        <a href="_" type="button">Sign in</a>
-        <p>or sign up with</p>
-        
-        <div class="socials">
-       <img src="https://i.pinimg.com/originals/b3/da/ac/b3daac6815ebf1516a545db6c3e40a36.jpg" alt="">
-       <img src="https://icones.pro/wp-content/uploads/2021/02/facebook-icone-orange.png" alt="">    
-       <img src="https://i.pinimg.com/originals/ac/cf/1d/accf1d80314304e11e2bcf9537e13304.jpg" alt="">
-        
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="avatar">
+        <img src="https://cdn.pixabay.com/photo/2014/04/02/14/10/female-306407_960_720.png" alt="Avatar">
+      </div>
+      <div class="form">
+        <h2>Login</h2>
+        <form action="/user/user_logindata" method="post">
+          <input type="email" name="email" placeholder="Useremail">
+          <input type="password" name="password" placeholder="Password">
+          <button>Log in</button>
+        </form>
+        <p class="message">Don't Have An Account <a href="/user/user_registration">Sign Up</a></p>
+        <%if(messages.success){%>
+            <div style="width: fit-content; background-color: cadetblue; color: white; padding: 10px 20px;"><%=messages.success%></div>
+          <%}%>
+      </div>
     </div>
-    </div>
-    
-    <div class="circle"></div>
-    <div class="circle-1"></div>
-    <div class="circle-2"></div>
-</body>
+  </body>
 </html>
