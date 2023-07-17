@@ -1,9 +1,9 @@
 <center>
     <h2>Update Page</h2>
     <%if(messages.success){%>
-        <div style="width: fit-content; padding: 10px 20px;"><%=messages.success%></div>
-    <%}%>
-    <form action="/updatedata/<%=data.id%>" enctype="multipart/form-data" method="post">
+        <div style="width: fit-content; background-color: cadetblue; color: white; padding: 10px 20px;"><%=messages.success%></div>
+      <%}%>
+    <form action="/admin/updatedata/<%=data.id%>" enctype="multipart/form-data" method="post">
         <table>
             <tr>
                 <td>
@@ -12,7 +12,11 @@
             </tr>
             <tr>
                 <td>
-                    Email : <input type="text" name="email" value="<%=data.email%>"><br><br>
+                    
+                    Email : <input type="text" name="" id="ss" value="" >
+                    <br>
+                    <label for="">old email : <%=data.email%></label>
+                    <br><br>
                 </td>
             </tr>
             <tr>
@@ -22,9 +26,24 @@
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="submit">
+                    <input type="submit" value="submit" onclick="hh()">
                 </td>
             </tr>
         </table>
     </form>
 </center>
+
+<script>
+
+function hh(){
+
+    var dd=document.getElementById('ss').value
+  
+    if(dd ==""){
+        document.getElementById('ss').name="";
+    }else{
+        document.getElementById('ss').name="email"
+    }
+}
+
+</script>

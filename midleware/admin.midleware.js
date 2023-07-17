@@ -12,17 +12,17 @@ const admin_token = async(req,res,next)=>{
             }
         })
         if(userdata == undefined){
-            res.redirect('/')
+            res.redirect('/admin/login')
         } else {
             var data = await admin.findById(userdata.userid)
             if(data == null){
-                res.redirect('/')
+                res.redirect('/admin/login')
             } else {
                 next();
             }
         }
     } else {
-        res.redirect('/')
+        res.redirect('/admin/login')
     }
 }
 

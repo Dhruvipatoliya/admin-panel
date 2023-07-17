@@ -12,13 +12,12 @@ const {
     deletedata,
     updatepage,
     updatedata,
-} = require('../controller/admin.controller')
+} = require('../controller/admin.controller') 
 const upload = require('../cloud/multer')
 const admin_token = require('../midleware/admin.midleware')
 
-router.get('/registration',registration)
 router.post('/registrationdata',registrationdata)
-router.get('/',login)
+router.get('/login',login)
 router.post('/logindata',logindata)
 router.get('/forgot_password',admin_token,forgot_password)
 router.get('/dashboard',admin_token,dashboard)

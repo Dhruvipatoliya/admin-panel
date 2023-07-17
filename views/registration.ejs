@@ -138,10 +138,10 @@
               <h4 class="mb-2">Adventure starts here 🚀</h4>
               <p class="mb-4">Make your app management easy and fun!</p>
 
-              <form id="formAuthentication" class="mb-3" action="/registrationdata" method="POST">
+              <form id="formAuthentication" class="mb-3" action="/admin/registrationdata" method="POST">
                 <div class="mb-3">
                   <%if(messages.success){%>
-                    <div style="width: fit-content; padding: 10px 20px;"><%=messages.success%></div>
+                    <div style="width: fit-content; background-color: cadetblue; color: white; padding: 10px 20px;"><%=messages.success%></div>
                   <%}%>
                   <label for="username" class="form-label">Username</label>
                   <input
@@ -186,7 +186,7 @@
 
               <p class="text-center">
                 <span>Already have an account?</span>
-                <a href="/">
+                <a href="/admin/login">
                   <span>Sign in instead</span>
                 </a>
               </p>

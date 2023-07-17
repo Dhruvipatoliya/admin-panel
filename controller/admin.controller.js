@@ -3,15 +3,6 @@ const admin = require('../model/admin.model')
 const cloudinary = require('../cloud/cloudinary')
 const jwt = require('jsonwebtoken')
 
-//registration get method
-exports.registration = async (req, res) => {
-    try {
-        res.render('registration')
-    } catch (error) {
-        console.log(error, 'catch error');
-    }
-}
-
 //registration data post method
 exports.registrationdata = async (req, res) => {
     try {
@@ -28,7 +19,7 @@ exports.registrationdata = async (req, res) => {
             })
             console.log('registration successfully');
             req.flash('success', 'registration successfully')
-            res.redirect('/')
+            res.redirect('back')
         } else {
             console.log('email already exits');
             req.flash('success', 'email already exits')
@@ -66,9 +57,9 @@ exports.logindata = async (req, res) => {
                 req.flash('success', 'login successfully')
 
                 var token = await jwt.sign({userid : find._id},process.env.KEY)
-                res.cookie("jwt",token,{expires:new Date(Date.now()+60*1000)})
+                res.cookie("jwt",token,{expires:new Date(Date.now()+24*60*60*1000)})
 
-                res.redirect('/dashboard')
+                res.redirect('/admin/dashboard')
             } else {
                 console.log('enter valid password');
                 req.flash('success', 'enter valid password')
@@ -148,23 +139,34 @@ exports.updatepage = async (req, res) => {
 
 exports.updatedata = async (req, res) => {
     try {
+        var data = await admin.findById(req.params.id)
+        if(req.file){
+            cloudinary.uploader.destroy(data.img_id,(err,result)=>{
+                if(err){
+                    console.log(err);
+                } else {
+                    console.log(result);
+                }
+            })
+        }
         console.log(req.file);
         if (req.file) {
             var imgdata = await cloudinary.uploader.upload(req.file.path)
             var img = imgdata.secure_url
             var img_id = imgdata.public_id
         }
-        console.log(img, img_id);
         var email = req.body.email
         req.body.img = img
         req.body.img_id = img_id
-        var find = await admin.findOne({ email })
-        if (find == null) {
+        var find = await admin.find({email});
+       
+        console.log(find.length);
+        if (find.length==0) {
             var update = await admin.findByIdAndUpdate(req.params.id, req.body)
             if (update) {
                 console.log('data updated successfully');
                 req.flash('success', 'data updated successfully')
-                res.redirect('/table')
+                res.redirect('/admin/table')
             } else {
                 console.log('data not updated successfully');
                 req.flash('success', 'data not updated successfully')
