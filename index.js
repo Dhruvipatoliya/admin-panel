@@ -12,7 +12,7 @@ app.use(session({
     saveUninitialized : false,
     resave : false,
 }))
-app.use(cookieParser())
+app.use(cookieParser());
 require('dotenv').config()
 
 app.set('view engine','ejs') 
